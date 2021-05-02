@@ -3,18 +3,14 @@
 
 {% block content %}
 <br>
+
 <div class="container">
 
-    <a href="https://google.com" class="btn btn-success">Login with LINE</a>
-    <a href="https://google.com" class="btn btn-primary">Login with Facebook</a>
-    <a href="https://google.com" class="btn btn-danger">Login with Google</a>
+   
+  <h3>你已經登入，以下為用戶相關資訊</h3>
 
+    <a href="{% url 'log-out' %}" class="btn btn-warning">登出</a>
 
-
-
-    <div class="container">
-      {{content}}
-    </div>
 
 </div>
 
