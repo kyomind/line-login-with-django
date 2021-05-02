@@ -7,11 +7,49 @@
 <div class="container">
 
    
-  <h3>你已經登入，以下為用戶相關資訊</h3>
+  <h3>Hi! {{ user.socialaccount_set.all.0.get_provider_account }}，你已經以 {{ provider|title }} 帳號登入，以下為用戶相關資訊</h3>
 
+  
+  <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" width='100'>
+    
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">屬性</th>
+          <th scope="col">值</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      
+        {% for k,v in items %}
+        <tr>
+         
+          <td>{{k}}</td>
+          <td>{{v}}</td>
+        </tr>
+        {% endfor %}
+       
+
+
+      </tbody>
+    </table>
+
+
+    {{ so_user }}
+    {{ data }}
+   
+    {{ keys }}
+  
+    
+
+    <br>
+    
     <a href="{% url 'log-out' %}" class="btn btn-warning">登出</a>
-
-
 </div>
+
+
+
+
 
   {% endblock %}

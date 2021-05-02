@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from allauth.socialaccount.models import SocialAccount
 
 from .models import User
 
@@ -10,7 +11,12 @@ from .models import User
 def main(request):
     """首頁(登入頁面)
     """
-    return render(request, 'main.html')
+    social_user = SocialAccount.objects.get(user=request.user)
+    provider = social_user.provider
+    items = social_user.extra_data.items()
+
+
+    return render(request, 'main.html', locals())
 
 
 def log_in(request):
